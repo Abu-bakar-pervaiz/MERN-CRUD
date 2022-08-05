@@ -1,5 +1,5 @@
 **********   FRONT END COMMAND   ***********
-npm install axios moment redux redux-thunk react-file-base64
+npm install axios moment react-redux redux-thunk react-file-base64
 
 
 **********   BACK END COMMAND   ***********
