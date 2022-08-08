@@ -584,7 +584,6 @@ const Dashboard = () => {
           </section>
         </div>
       </div>
-v>
     </div>
   )
 }

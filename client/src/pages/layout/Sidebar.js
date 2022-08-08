@@ -20,7 +20,7 @@ const Sidebar = () => {
                             <li>
                                 <Link className="nav-link" to="/dashboard">Dashboard</Link>
                             </li> */}
-                            <li><a className="nav-link" href="/home">Home</a></li>
+                            <li><a className="nav-link" href="/add-course">Add Course</a></li>
                             <li><a className="nav-link" href="/dashboard">Dashboard</a></li>
                         </ul>
                     </li>
