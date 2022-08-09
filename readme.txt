@@ -21,3 +21,13 @@ npm install body-parser cors express mongoose nodemon
 vohoki4568@anlubi.com
 testUser
 B1QGpqFOhivPFOAg
+
+
+
+**********   NPM error solve   ***********
+
+
+
+
+npm install --save err
+npm config set registry https://skimdb.npmjs.com/registry
