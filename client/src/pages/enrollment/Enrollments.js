@@ -25,7 +25,8 @@ const Content = () => {
                     <thead>
                         <tr>
                             <th>Sr No.</th>
-                            <th>Name</th>
+                            <th>Course Name</th>
+                            <th>No. of Enrollments</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -35,8 +36,9 @@ const Content = () => {
                             <tr>
                                 <td>{i+1}</td>
                                 <td>{enrollment.name}</td>
+                                <td>13</td>
                                 <td>
-                                    <Link to={'/edit-enrollment/'+enrollment.id} className="btn btn-warning fa fa-edit"></Link>
+                                    <Link to={'/view-enrollment/'+enrollment.id} className="btn btn-info fa fa-eye"></Link>
                                 </td>
                             </tr>
                         ))

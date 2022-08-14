@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 const Sidebar = () => {
+    const zoomMeetingLink = "https://us05web.zoom.us/start/webmeeting"
     return (
         <div className="main-sidebar sidebar-style-2">
             <aside id="sidebar-wrapper">
@@ -68,6 +69,17 @@ const Sidebar = () => {
                             </li>
                         </ul>
                     </li>
+                    <li className="dropdown">
+                        <a href="#" className="menu-toggle nav-link has-dropdown">
+                            <i class="fas fa-book-medical"></i><span>Online Meeting</span>
+                        </a>
+                        <ul className="dropdown-menu">
+                            <li>
+                                <a href={zoomMeetingLink} target="_blank" className="nav-link">Zoom Meeting</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
                 </ul>
             </aside>
         </div>

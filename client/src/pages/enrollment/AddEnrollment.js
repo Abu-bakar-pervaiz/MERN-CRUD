@@ -3,16 +3,32 @@ import ContentLayout from '../layout/ContentLayout'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
 import { add } from '../../reducers/EnrollmentSlice';
+
+import Select from 'react-select'
 const Content = () => {
+      
+    const options = [
+        { value: 'Abu Bakar', label: 'Abu Bakar' },
+        { value: 'Tahreem', label: 'Tahreem' },
+        { value: 'Hamza', label: 'Hamza' }
+      ]
     const addEnrollment = useDispatch()
     const [students, setStudents] = useState([])
     const [course, setCourse] = useState("")
     const handleFormSubmit = (e)=>{
         e.preventDefault();
+        console.log(students);
+        return;
         const enrollment = {
             students,course
         };
         addEnrollment( add(enrollment) )
+    }
+    const handleChange = (options) =>{
+        const selectedOptions = options.map( option => {
+            return (option.value)
+        });
+        setStudents(selectedOptions)
     }
     
     return (
@@ -27,7 +43,7 @@ const Content = () => {
                     </div>
                     <div className="col-md-12 form-group">
                         <label htmlFor="Students">Students</label>
-
+                        <Select options={options} isMulti onChange={handleChange} />
                         {/* <input type="text" onChange={(e)=>setStudents(e.target.value)} className='form-control' placeholder='Enter Enrollment Students' /> */}
                     </div>
                     <div className="col-md-12 form-group">
