@@ -1,14 +1,30 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
 const initialState = {
     loading:false,
     data:[{
-        id:1,
-        title:"First Course",
-        creditHours:"3(2-1)",
-        code:"FC-1"
-    }],
+            id:"1",
+            title:"The Fundamentals of IT",
+            creditHours:"4(3-1)",
+            code:"CSI-321"
+        }],
     error:"",
 }
+// createAsyncThunk Generates built in pending,fulfilled and rejected action types
+export const fetchCourses = createAsyncThunk('course/fetchCourses', () =>{
+    // console.log("Reahing in the FetchCourses");
+    return [
+        {
+            id:"1", 
+            title:"The Fundamentals of IT",
+            creditHours:"4(3-1)",
+            code:"CSI-321"
+        }
+    ]
+    return axios.get('https://jsonplaceholder.typicode.com/users')
+    .then( (response)=> response.data )
+});
 
 const CourseSlice = createSlice({
     name:"course",
@@ -16,9 +32,27 @@ const CourseSlice = createSlice({
     reducers:{
         add:(state,action) => {
             state.data.push(action.payload)
+        },
+        edit:(state,action) => {
+            return "reaching"
         }
+    },
+    extraReducers:(builder) =>{
+        builder.addCase(fetchCourses.pending,(state) => {
+            state.loading = true;
+        });
+        builder.addCase(fetchCourses.fulfilled,(state,action) => {
+            state.loading = false
+            state.data = action.payload
+            state.error = ""
+        });
+        builder.addCase(fetchCourses.rejected,(state,action) => {
+            state.loading = false;
+            state.data = [];
+            state.error = action.error.message
+        });
     }
 });
 
 export default CourseSlice.reducer
-export const { add } = CourseSlice.actions
+export const { add,edit } = CourseSlice.actions

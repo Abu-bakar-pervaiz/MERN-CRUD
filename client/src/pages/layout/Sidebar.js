@@ -20,8 +20,14 @@ const Sidebar = () => {
                             <li>
                                 <Link className="nav-link" to="/dashboard">Dashboard</Link>
                             </li> */}
-                            <li><a className="nav-link" href="/add-course">Add Course</a></li>
-                            <li><a className="nav-link" href="/dashboard">Dashboard</a></li>
+                            <li>
+                                <Link className="nav-link" to="/add-course">Add Course</Link>
+                                {/* <a className="nav-link" href="/add-course">Add Course</a> */}
+                            </li>
+                            <li>
+                                <Link className="nav-link" to="/all-course">All Course</Link>
+                                {/* <a className="nav-link" href="/all-course">All Course</a> */}
+                                </li>
                         </ul>
                     </li>
                 </ul>
