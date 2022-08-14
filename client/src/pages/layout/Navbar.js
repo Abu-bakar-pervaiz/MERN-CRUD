@@ -7,8 +7,11 @@ const Navbar = () => {
             <nav className="navbar navbar-expand-lg main-navbar sticky">
                 <div className="form-inline mr-auto">
                     <ul className="navbar-nav mr-3">
-                        <li><a href="#" data-toggle="sidebar" className="nav-link nav-link-lg
-                              collapse-btn"> <i data-feather="align-justify" /></a></li>
+                        <li>
+                            <a href="#" data-toggle="sidebar" className="nav-link nav-link-lg collapse-btn">
+                                <i className="fa fa-bars" style={{ color:"black !important" }}></i>
+                            </a>
+                        </li>
                         <li><a href="#" className="nav-link nav-link-lg fullscreen-btn">
                             <i data-feather="maximize" />
                         </a></li>
@@ -25,9 +28,11 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <ul className="navbar-nav navbar-right">
-                    <li className="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" className="nav-link nav-link-lg message-toggle"><i data-feather="mail" />
-                        <span className="badge headerBadge1">
-                            6 </span> </a>
+                    {/*<li className="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" className="nav-link nav-link-lg message-toggle"><i data-feather="mail" />
+                                 <span className="badge headerBadge1">
+                                    6
+                                </span>  
+                            </a>
                         <div className="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                             <div className="dropdown-header">
                                 Messages
@@ -84,7 +89,7 @@ const Navbar = () => {
                                 <a href="#">View All <i className="fas fa-chevron-right" /></a>
                             </div>
                         </div>
-                    </li>
+                    </li>*/}
                     <li className="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" className="nav-link notification-toggle nav-link-lg"><i data-feather="bell" className="bell" />
                     </a>
                         <div className="dropdown-menu dropdown-list dropdown-menu-right pullDown">

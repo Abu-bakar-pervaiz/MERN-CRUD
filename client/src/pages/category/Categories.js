@@ -1,23 +1,23 @@
 import React from 'react'
 import ContentLayout from '../layout/ContentLayout'
-import {useState,useEffect} from 'react';
+import { useEffect } from 'react';
 import { useDispatch,useSelector } from 'react-redux/es/exports';
-import { fetchCourses } from '../../reducers/CourseSlice';
-import {Link} from 'react-router-dom';
+import { fetchCategories } from '../../reducers/CategorySlice';
+import { Link } from 'react-router-dom';
 const Content = () => {
-    const courses = useSelector( (state)=>state.course)
+    const categories = useSelector( (state)=>state.categories)
     const dispatch = useDispatch()
     useEffect(()=>{
-        dispatch( fetchCourses() );
+        dispatch( fetchCategories() );
     },[])
     
     return (
         <div>
             {
-                !courses.loading && courses.error ? <div>Error : {courses.error}</div> : ""
+                !categories.loading && categories.error ? <div>Error : {categories.error}</div> : ""
             }
             {
-                courses.loading ? (
+                categories.loading ? (
                     <h1>Loading.....</h1>
                 )
                 :(
@@ -25,22 +25,18 @@ const Content = () => {
                     <thead>
                         <tr>
                             <th>Sr No.</th>
-                            <th>Title</th>
-                            <th>Credit Hours</th>
-                            <th>Code</th>
+                            <th>Name</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                        courses.data.map( (course,i)=>(   
+                        categories.data.map( (category,i)=>(   
                             <tr>
                                 <td>{i+1}</td>
-                                <td>{course.title}</td>
-                                <td>{course.creditHours}</td>
-                                <td>{course.code}</td>
+                                <td>{category.name}</td>
                                 <td>
-                                    <Link to={'/edit-course/'+course.id} className="btn btn-warning fa fa-edit"></Link>
+                                    <Link to={'/edit-category/'+category.id} className="btn btn-warning fa fa-edit"></Link>
                                 </td>
                             </tr>
                         ))
@@ -54,10 +50,10 @@ const Content = () => {
     )
 }
 
-const Courses = () => {
+const Categories = () => {
     return (
-        <ContentLayout heading="All Course" content={ <Content/> } />
+        <ContentLayout heading="All Category" content={ <Content/> } />
     )
   }
   
-export default Courses
+export default Categories

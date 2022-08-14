@@ -1,23 +1,23 @@
 import React from 'react'
 import ContentLayout from '../layout/ContentLayout'
-import {useState,useEffect} from 'react';
+import { useEffect } from 'react';
 import { useDispatch,useSelector } from 'react-redux/es/exports';
-import { fetchCourses } from '../../reducers/CourseSlice';
-import {Link} from 'react-router-dom';
+import { fetchEnrollments } from '../../reducers/EnrollmentSlice';
+import { Link } from 'react-router-dom';
 const Content = () => {
-    const courses = useSelector( (state)=>state.course)
+    const enrollments = useSelector( (state)=>state.enrollments)
     const dispatch = useDispatch()
     useEffect(()=>{
-        dispatch( fetchCourses() );
+        dispatch( fetchEnrollments() );
     },[])
     
     return (
         <div>
             {
-                !courses.loading && courses.error ? <div>Error : {courses.error}</div> : ""
+                !enrollments.loading && enrollments.error ? <div>Error : {enrollments.error}</div> : ""
             }
             {
-                courses.loading ? (
+                enrollments.loading ? (
                     <h1>Loading.....</h1>
                 )
                 :(
@@ -25,22 +25,18 @@ const Content = () => {
                     <thead>
                         <tr>
                             <th>Sr No.</th>
-                            <th>Title</th>
-                            <th>Credit Hours</th>
-                            <th>Code</th>
+                            <th>Name</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                        courses.data.map( (course,i)=>(   
+                        enrollments.data.map( (enrollment,i)=>(   
                             <tr>
                                 <td>{i+1}</td>
-                                <td>{course.title}</td>
-                                <td>{course.creditHours}</td>
-                                <td>{course.code}</td>
+                                <td>{enrollment.name}</td>
                                 <td>
-                                    <Link to={'/edit-course/'+course.id} className="btn btn-warning fa fa-edit"></Link>
+                                    <Link to={'/edit-enrollment/'+enrollment.id} className="btn btn-warning fa fa-edit"></Link>
                                 </td>
                             </tr>
                         ))
@@ -54,10 +50,10 @@ const Content = () => {
     )
 }
 
-const Courses = () => {
+const Enrollments = () => {
     return (
-        <ContentLayout heading="All Course" content={ <Content/> } />
+        <ContentLayout heading="All Enrollment" content={ <Content/> } />
     )
   }
   
-export default Courses
+export default Enrollments
